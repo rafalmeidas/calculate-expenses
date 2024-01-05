@@ -6,8 +6,6 @@
     "module": "ESNext",
     "skipLibCheck": true,
 
-    "types": ["testing-library__jest-dom"],
-
     /* Bundler mode */
     "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
