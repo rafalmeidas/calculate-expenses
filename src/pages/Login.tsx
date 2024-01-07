@@ -1,8 +1,8 @@
 import { Navigate } from "react-router-dom";
+import styled from "styled-components";
 
 import GoogleIcon from "../components/icons/GoogleIcon";
 import { useAuth } from "../hooks/useAuth";
-import styled from "styled-components";
 
 const TagSection = styled.section`
   width: 100%;
