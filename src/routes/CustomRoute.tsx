@@ -7,6 +7,7 @@ export interface RouteOption {
   name: string;
   path: string;
   element: ReactElement;
+  isPrivate: boolean;
 }
 
 export class CustomRoute {
@@ -19,6 +20,7 @@ export class CustomRoute {
       name: option.name ?? "",
       path: option.path ?? "",
       element: option.element ?? <Navigate to="login" />,
+      isPrivate: option.isPrivate ?? false,
     };
   }
 

@@ -34,13 +34,11 @@ const FooterTag = styled.footer`
   }
 
   hr {
-    margin: 15px 0;
+    margin: 0 0 15px 0;
     height: 2px;
     background-color: var(--title-light);
     border: none;
   }
-
-  padding: 0 20px;
 
   @media screen and (min-width: 768px) and (max-width: 1023px) {
     padding: 0 100px;
@@ -71,7 +69,7 @@ const FooterTag = styled.footer`
     }
 
     hr {
-      margin: 40px 0;
+      margin: 0 0 40px 0;
       height: 5px;
     }
   }
@@ -84,12 +82,9 @@ const FooterTag = styled.footer`
 function Footer() {
   return (
     <FooterTag>
-      <div>
-        <span>LOGO</span>
-      </div>
       <hr />
       <div>
-        <NavLinks />
+        <NavLinks displaySignIn />
         <span>Designed and build by Rafael Silva with ❤️</span>
       </div>
     </FooterTag>

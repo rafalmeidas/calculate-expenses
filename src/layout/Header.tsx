@@ -5,12 +5,17 @@ import MenuIcon from "../components/icons/MenuIcon";
 import useMediaQuery from "../hooks/useMediaQuery";
 import NavLinks from "../components/NavLinks";
 import Drawer from "../components/Drawer";
+import { useLocation } from "react-router-dom";
 
 const TagHeader = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 20px;
+
+  > nav {
+    display: none;
+  }
 
   @media screen and (min-width: 768px) and (max-width: 1023px) {
     padding: 20px 100px 0 100px;
@@ -64,6 +69,10 @@ const DivTag = styled.div`
 `;
 
 function Header() {
+  const location = useLocation();
+
+  const isLogin: boolean = location.pathname === "/login";
+
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   const matchMin1024 = useMediaQuery({ minWidth: 1024 });
@@ -82,6 +91,8 @@ function Header() {
       setIsDrawerOpen(false);
     }
   }, [isDrawerOpen, matchMin1024]);
+
+  if (isLogin) return null;
 
   return (
     <>

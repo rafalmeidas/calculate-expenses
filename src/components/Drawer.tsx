@@ -3,6 +3,7 @@ import styled, { css } from "styled-components";
 import NavLinks from "./NavLinks";
 
 import { keyframes } from "styled-components";
+import { useAuth } from "../hooks/useAuth";
 
 const slideInLeft = keyframes`
 0% {
@@ -52,9 +53,29 @@ const DivTagContent = styled.div`
   height: 100%;
 
   > section {
+    height: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     gap: 20px;
+
+    button {
+      width: 50px;
+      padding: 0;
+      margin: 0;
+      background: transparent;
+      border: none;
+      font-size: 18px;
+      cursor: pointer;
+      color: red;
+
+      transition: all 0.5s ease-in-out;
+
+      &:hover {
+        font-weight: 800;
+        color: var(--light-content);
+      }
+    }
   }
 `;
 
@@ -64,12 +85,22 @@ interface onToProps {
 }
 
 function Drawer({ open, onTo }: onToProps) {
+  const { signOut } = useAuth();
+
+  const handleSignOut = () => {
+    onTo();
+    signOut();
+  };
+
   return (
     <>
       <DivTagDrawer>
         <DivTagContent>
           <section>
             <NavLinks isRow={false} onTo={onTo} />
+            <button aria-label="clique para sair" onClick={handleSignOut}>
+              Sair
+            </button>
           </section>
         </DivTagContent>
       </DivTagDrawer>

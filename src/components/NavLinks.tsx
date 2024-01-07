@@ -1,8 +1,9 @@
 import { PropsWithChildren } from "react";
-import styled, { css } from "styled-components";
 import { Link, useLocation } from "react-router-dom";
+import styled, { css } from "styled-components";
 
-import { routes } from "../routes/Routes";
+import { routes } from "../routes/routes";
+import SignIn from "./SignIn";
 
 interface NavTagProps {
   $isRow: boolean;
@@ -29,13 +30,6 @@ const LinkTag = styled(Link)<LinkTagProps>`
     font-size: 20px;
     line-height: 130%;
     color: var(--light-content);
-    /* 
-    color: ${$isActive
-      ? "var(--subtitle-light)"
-      : "var(--light-content)"} !important;
-    &:hover {
-      color: var(--subtitle-light) !important;
-    } */
 
     ${$isActive &&
     css`
@@ -54,10 +48,16 @@ const LinkTag = styled(Link)<LinkTagProps>`
 
 interface NavLinksProps extends PropsWithChildren {
   isRow?: boolean;
+  displaySignIn?: boolean;
   onTo?: () => void;
 }
 
-function NavLinks({ children, isRow = true, onTo }: NavLinksProps) {
+function NavLinks({
+  children,
+  isRow = true,
+  displaySignIn = false,
+  onTo,
+}: NavLinksProps) {
   const location = useLocation();
 
   const isActive = (pathname: string): boolean =>
@@ -77,6 +77,7 @@ function NavLinks({ children, isRow = true, onTo }: NavLinksProps) {
             {name}
           </LinkTag>
         ))}
+      <SignIn displaySignIn={displaySignIn} />
       {children}
     </NavTag>
   );
